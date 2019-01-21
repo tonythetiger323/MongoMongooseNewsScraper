@@ -59,3 +59,15 @@ typings/
 
 # next.js build output
 .next
+
+# tests and coverage folder for jest
+tests/
+coverage/
+
+# eslint files
+.eslintrc
+.eslintignore
+
+# prettier files
+.prettierignore
+.prettier.json
