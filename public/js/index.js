@@ -6,9 +6,17 @@ $(() => {
       if (scrapeResult.code === 'success') {
         $('#articlesScraped').modal('show');
         $('#noArticles').remove();
+
+        $.getJSON('/api/articles', data => {
+
+          res.json(data);
+        }
+        ).then(() => {
+          location.reload();
+        }
+
+        );
       }
-    });
-  });
 
 // $(document).ready(() => {
 
