@@ -49,7 +49,6 @@
     "express-handlebars": "^3.0.0",
     "express-handlebars-sections": "^1.0.1",
     "mongoose": "^5.4.5",
-    "morgan": "^1.9.1",
     "trackjs": "^3.0.1"
   },
   "devDependencies": {

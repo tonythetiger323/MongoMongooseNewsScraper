@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const logger = require("morgan");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const express_handlebars_sections = require("express-handlebars-sections");
@@ -21,8 +20,6 @@ const app = express();
 
 // Configure middleware
 
-// Use morgan logger for logging requests
-app.use(logger("dev"));
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
