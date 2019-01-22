@@ -7,7 +7,7 @@ const cheerio = require("cheerio");
 
 module.exports = app => {
   app.get('/api/scrape', (req, res) => {
-    axios.get('gi').then(response => {
+    axios.get('https://www.superherohype.com/').then(response => {
 
       const $ = cheerio.load(response.data);
 
