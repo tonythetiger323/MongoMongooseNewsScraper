@@ -1,0 +1,56 @@
+<!--navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <span class="navbar-brand">Mongo Scraper</span>
+  <div class="navbar" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/savedarticles">Saved Articles</a>
+      </li>
+    </ul>
+  </div>
+  <button id="scrape" class="btn btn-outline-info" type="submit">Scrape New Articles!</button>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Mongo Scraper</h1>
+    <p class="lead">superherohype.com edition</p>
+    <p>Click 'Scrape New Articles' to load a list of articles from <a href="https://www.superherohype.com">https://www.superherohype.com</a>
+      you can choose to save.</p>
+  </div>
+</div>
+
+<div id="noArticles" class="card text-white bg-dark">
+  <div class="card-body">
+    <p class="card-text">No new articles! Click 'Scrape New Articles'</p>
+  </div>
+</div>
+
+<div id="articlesScraped" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Added new articles!</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="articles">
+
+</div>
+
+{{#section 'script'}}
+
+<script src="/js/index.js" type="text/javascript"></script>
+
+{{/section}}

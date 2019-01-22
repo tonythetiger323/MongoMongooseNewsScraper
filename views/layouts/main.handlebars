@@ -6,20 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>News Scraper</title>
-  <!--Google Fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Lato|News+Cycle" rel="stylesheet">
 
   <!--Bootstrap-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
     crossorigin="anonymous">
-
-  <!--css file-->
-  <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-  <!--navbar-->
-  {{> navbar}}
 
   {{{body}}}
 
@@ -39,7 +32,8 @@
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS && TrackJS.install({
-      token: "48df169f408944a384e277baefd62b48"
+      token: "48df169f408944a384e277baefd62b48",
+      application: "mongo-sraper"
       // for more configuration options, see https://docs.trackjs.com
     });
   </script>
@@ -52,7 +46,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
     crossorigin="anonymous"></script>
 
-  <!--Bootstrap-->
+  <!--Bootstrap Javascript-->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
 
