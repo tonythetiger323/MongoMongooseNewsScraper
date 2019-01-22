@@ -1,4 +1,4 @@
-const router = require('../controller/controller');
+const router = require("../controllers/controller");
 
 module.exports = app => {
   //load index page

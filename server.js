@@ -1,12 +1,10 @@
 require("dotenv").config();
-const path = require('path');
+const path = require("path");
 const express = require("express");
-const favicon = require('serve-favicon');
+const favicon = require("serve-favicon");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 const express_handlebars_sections = require("express-handlebars-sections");
-
-
 
 // Require all models
 const db = require("./models");
@@ -24,13 +22,15 @@ app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 // Site favicon
-app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, "public", "img", "favicon.ico")));
 
 // Connect to the Mongo DB
-const MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGODB;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(
+  MONGODB_URI,
+  { useNewUrlParser: true }
+);
 
 // Handlebars
 app.engine(
