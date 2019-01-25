@@ -64,10 +64,3 @@ typings/
 tests/
 coverage/
 
-# eslint files
-.eslintrc
-.eslintignore
-
-# prettier files
-.prettierignore
-.prettier.json

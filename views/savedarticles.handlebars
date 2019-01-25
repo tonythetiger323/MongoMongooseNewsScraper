@@ -14,7 +14,6 @@
       </li>
     </ul>
   </div>
-  <button id="scrape" class="btn btn-outline-info float-right" type="submit">Scrape New Articles!</button>
 </nav>
 
 <div class="jumbotron jumbotron-fluid">
@@ -28,6 +27,60 @@
 
 <div id="savedArticles">
 
+</div>
+
+<div id="notes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="notes" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="noteModalTitle"></h5>
+      </div>
+      <div class="modal-body">
+        <div class="savedNotes"></div>
+        <form>
+          <div class="form-group">
+            <label for="noteTitle">Note Title:</label>
+            <input type="text" class="form-control" id="noteTitle" aria-describedby="noteTitle" placeholder="Enter Note Title">
+          </div>
+          <div class="form-group">
+            <label for="noteText">Enter Note:</label>
+            <textarea class="form-control" id="noteText" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" id="saveNoteButton" class="btn btn-outline-info" data-dismiss="modal">Save Note</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div id="noteSaved" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="noteSaved" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Note Saved!</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="articleDeleted" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="articleDeleted" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Article Deleted!</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-info" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 {{#section 'script'}}
