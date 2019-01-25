@@ -20,7 +20,7 @@
   "rules": {
     "prettier/prettier": "error",
     "indent": ["error", 2],
-    "quotes": ["error", "single", {"avoidEscape": true}, {"allowTemplateLiterals": true}],
+    "quotes": ["error", "single", {"allowTemplateLiterals": true}],
     "arrow-body-style": ["error", "always"],
     "arrow-parens": ["error", "as-needed", {"requireForBlockBody": true}],
     "no-var": "error",
