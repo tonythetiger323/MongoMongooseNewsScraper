@@ -63,9 +63,15 @@ $(document).on('click', '#saveNoteButton', function(event) {
     .trim();
 
   addNote(newNoteTitle, newNoteText);
+  $('ul.savedNotes').append(
+    `<li class="list-group-item">${newNoteTitle}<button type="button" class="deleteNote" aria-label="Delete">
+    <span aria-hidden="true">&times;</span>
+  </button>`
+  );
 
   $('#noteTitle').val('');
   $('#noteText').val('');
+
   $('#noteSaved').modal('show');
 
   $.getJSON(`/api/articles/findArticleById/${thisId}`);
