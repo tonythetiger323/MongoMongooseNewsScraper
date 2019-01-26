@@ -24,6 +24,7 @@ $(document).ready(() => {
     $.getJSON(`/api/articles/findArticleById/${thisId}`, res => {
       $('#noteModalTitle').text(`Notes For Article: ${res.title}`);
       $('#saveNoteButton').attr('data-id', thisId);
+      //eslint-disable-next-line
       console.log(res);
       if (res.notes.length === 0) {
         $('ul.savedNotes').append(
@@ -32,6 +33,7 @@ $(document).ready(() => {
       }
 
       if (res.notes.length > 0) {
+        //eslint-disable-next-line
         res.notes.forEach(note => {
           $('ul.savedNotes').html(
             `<li class="list-group-item">${res.notes.title}</li>`
@@ -63,17 +65,18 @@ $(document).on('click', '#saveNoteButton', function(event) {
     .trim();
 
   addNote(newNoteTitle, newNoteText);
-  $('ul.savedNotes').append(
-    `<li class="list-group-item">${newNoteTitle}<button type="button" class="deleteNote" aria-label="Delete">
+  $(
+    'ul.savedNotes'
+  ).append(`<li class="list-group-item">${newNoteTitle}<button type="button" class="deleteNote" aria-label="Delete">
     <span aria-hidden="true">&times;</span>
-  </button>`
-  );
+  </button>`);
 
   $('#noteTitle').val('');
   $('#noteText').val('');
 
   $('#noteSaved').modal('show');
 
+  const thisId = $(this).attr('data-id');
   $.getJSON(`/api/articles/findArticleById/${thisId}`);
 });
 
