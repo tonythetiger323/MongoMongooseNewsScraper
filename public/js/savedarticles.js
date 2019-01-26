@@ -24,6 +24,20 @@ $(document).ready(() => {
     $.getJSON(`/api/articles/findArticleById/${thisId}`, res => {
       $('#noteModalTitle').text(`Notes For Article: ${res.title}`);
       $('#saveNoteButton').attr('data-id', thisId);
+      console.log(res);
+      if (res.notes.length === 0) {
+        $('ul.savedNotes').append(
+          '<li class="list-group-item">No Saved Articles</li>'
+        );
+      }
+
+      if (res.notes.length > 0) {
+        res.notes.forEach(note => {
+          $('ul.savedNotes').html(
+            `<li class="list-group-item">${res.notes.title}</li>`
+          );
+        });
+      }
     });
 
     $('#notes').modal('show');
