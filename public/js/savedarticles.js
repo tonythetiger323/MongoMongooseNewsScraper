@@ -68,7 +68,7 @@ $(document).on('click', '#saveNoteButton', function(event) {
   $('#noteText').val('');
   $('#noteSaved').modal('show');
 
-  $.getJSON(`/api/articles/findArticleWithNotesById/${thisId}`);
+  $.getJSON(`/api/articles/findArticleById/${thisId}`);
 });
 
 $(document).on('click', '.delete', function(event) {
