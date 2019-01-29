@@ -21,7 +21,6 @@
     "prettier/prettier": "error",
     "indent": ["error", 2],
     "quotes": ["error", "single", {"allowTemplateLiterals": true}],
-    "arrow-body-style": ["error", "always"],
     "no-var": "error",
     "prefer-const": "error",
     "block-scoped-var": "error",
@@ -50,13 +49,13 @@
     "no-whitespace-before-property": "error",
     "nonblock-statement-body-position": ["error", "beside"],
     "object-curly-newline": ["error", {"consistent": true}],
-    "object-curly-spacing": ["error", "never"],
     "semi": ["error", "always", {"omitLastInOneLineBlock": true}],
     "semi-spacing": ["error", {"before": false, "after": true}],
     "semi-style": ["error", "last"],
     "space-before-blocks": ["error", "always"],
     "space-in-parens": ["error", "never"],
-    "switch-colon-spacing": ["error", {"after": true, "before": false}]
+    "switch-colon-spacing": ["error", {"after": true, "before": false}],
+    "no-console": "off"
     
     
     

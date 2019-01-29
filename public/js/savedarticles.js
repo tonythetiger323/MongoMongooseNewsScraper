@@ -25,18 +25,21 @@ $(document).ready(() => {
       $('#noteModalTitle').text(`Notes For Article: ${res.title}`);
       $('#saveNoteButton').attr('data-id', thisId);
       //eslint-disable-next-line
-      console.log(res);
+      console.log(res.notes.length);
       if (res.notes.length === 0) {
         $('ul.savedNotes').append(
-          '<li class="list-group-item">No Saved Articles</li>'
+          '<li class="list-group-item">No Saved Notes</li>'
         );
-      }
-
-      if (res.notes.length > 0) {
+      } else {
         //eslint-disable-next-line
         res.notes.forEach(note => {
-          $('ul.savedNotes').html(
-            `<li class="list-group-item">${res.notes.title}</li>`
+          $('ul.savedNotes').append(
+            //eslint-disable-next-line
+            `<li class="list-group-item">${
+              note.title
+            }<button type="button" class="deleteNote" aria-label="Delete">
+            <span aria-hidden="true">&times;</span>
+          </button></li>`
           );
         });
       }
@@ -65,11 +68,6 @@ $(document).on('click', '#saveNoteButton', function(event) {
     .trim();
 
   addNote(newNoteTitle, newNoteText);
-  $(
-    'ul.savedNotes'
-  ).append(`<li class="list-group-item">${newNoteTitle}<button type="button" class="deleteNote" aria-label="Delete">
-    <span aria-hidden="true">&times;</span>
-  </button>`);
 
   $('#noteTitle').val('');
   $('#noteText').val('');
@@ -78,6 +76,11 @@ $(document).on('click', '#saveNoteButton', function(event) {
 
   const thisId = $(this).attr('data-id');
   $.getJSON(`/api/articles/findArticleById/${thisId}`);
+});
+
+$('#noteSaved').on('hide', event => {
+  event.preventDefault();
+  location.reload();
 });
 
 $(document).on('click', '.delete', function(event) {

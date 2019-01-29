@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const db = require('../models');
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -23,9 +24,7 @@ module.exports = app => {
           .children('a')
           .attr('href');
 
-        db.Article.create(result)
-          .then(dbArticle => console.log(dbArticle))
-          .catch(err => console.log(err));
+        db.Article.create(result);
       });
 
       res.json({ code: 'success' });
@@ -38,18 +37,18 @@ module.exports = app => {
       .catch(err => res.json(err));
   });
 
-  app.put('/api/articles/:id/saveArticle', (req, res) => {
+  app.put('/api/articles/:_id/saveArticle', (req, res) => {
     db.Article.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params._id },
       { $set: { saved: true } }
     )
       .then(dbArticle => res.json(dbArticle))
       .catch(err => res.json(err));
   });
 
-  app.put('/api/articles/:id/deleteSavedArticle', (req, res) => {
+  app.put('/api/articles/:_id/deleteSavedArticle', (req, res) => {
     db.Article.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params._id },
       { $set: { saved: false } }
     )
       .then(dbArticle => res.json(dbArticle))
@@ -66,26 +65,29 @@ module.exports = app => {
       .catch(err => res.json(err));
   });
 
-  app.get('/api/articles/findArticleById/:id', (req, res) => {
-    db.Article.findById(req.params.id)
-      .populate('note')
+  app.get('/api/articles/findArticleById/:_id', (req, res) => {
+    db.Article.findById(req.params._id)
+      .populate('notes')
 
-      .then(dbArticles => res.json(dbArticles))
+      .then(dbArticles => {
+        res.json(dbArticles);
+      })
       .catch(err => res.json(err));
   });
 
   app.get('/api/notes', (req, res) => {
     db.Notes.find({})
+      .populate('article')
       .then(dbNotes => res.json(dbNotes))
       .catch(err => res.json(err));
   });
 
-  app.post('/api/notes/:id', (req, res) => {
+  app.post('/api/notes/:_id', (req, res) => {
     db.Note.create(req.body)
 
       .then(dbNote => {
         return db.Article.findOneAndUpdate(
-          { _id: req.params.id },
+          { _id: req.params._id },
           { $push: { notes: dbNote._id } },
           { new: true }
         );

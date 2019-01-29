@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 $(document).ready(() => {
   //event for when Scrape New Articles Button is clicked
   $('#scrape').on('click', event => {
@@ -17,9 +18,12 @@ $(document).ready(() => {
                 element.title
               }<button data-id="${
                 element._id
-              }" type="button" class="btn btn-outline-info float-right save">Save</button></div><div class="card-body"><p class="card-text"><a href="${
+              }" type="button" class="btn btn-outline-info float-right save">Save</button></div><div class="card-body">
+              ${element.summary}
+              <div class="card-footer">
+              <p class="card-text"><a href="${element.link}">${
                 element.link
-              }">${element.link}</a></p></div></div>`
+              }</a></p></div></div>`
             );
           });
         });

@@ -60,7 +60,9 @@ typings/
 # next.js build output
 .next
 
-# tests and coverage folder for jest
+# tests and coverage folder for 
 tests/
-coverage/
+
+#HTTP Route Tester
+*.paw
 
