@@ -27,7 +27,7 @@ $(document).ready(() => {
           element.title
         }<button data-id="${
           element._id
-        }" type="button" class="btn btn-outline-info notes">Article Notes</button><button data-id="${
+        }" type="button" class="btn btn-outline-info notes ml-5 mr-5">Article Notes</button><button data-id="${
           element._id
         }" type="button" class="btn btn-outline-info delete">Delete From Saved</button></div><div class="card-body"><p class="card-text"><a href="${
           element.link
@@ -56,7 +56,7 @@ $(document).ready(() => {
               note.title
             }<button type="button" data-id="${
               note._id
-            }" class="deleteNote" aria-label="Delete">
+            }" class="deleteNote ml-3" aria-label="Delete">
             <span aria-hidden="true">&times;</span>
           </button></li>`
           );

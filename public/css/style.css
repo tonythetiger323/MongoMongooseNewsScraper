@@ -1,0 +1,21 @@
+.navbar {
+  margin-bottom: 0px;
+}
+.jumbotron{
+  background-image: url('../img/Free-avengers-backgrounds.jpg');
+  height: 95%;
+  background-size: cover;
+  background-repeat: no-repeat;
+ }
+
+ .jumbotron h1 {
+   color: #FFF
+ }
+
+ .jumbotron p {
+   color: #FFF
+ }
+
+ .jumbotron a {
+   color: #C0C0C0
+ }
