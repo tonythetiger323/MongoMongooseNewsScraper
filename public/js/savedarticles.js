@@ -1,4 +1,23 @@
 $(document).ready(() => {
+  //eslint-disable-next-line
+  jQuery.each(['put', 'delete'], function(i, method) {
+    jQuery[method] = function(url, data, callback, type) {
+      if (jQuery.isFunction(data)) {
+        type = type || callback;
+        callback = data;
+        data = undefined;
+      }
+
+      return jQuery.ajax({
+        url: url,
+        type: method,
+        dataType: type,
+        data: data,
+        success: callback
+      });
+    };
+  });
+
   $.getJSON('api/articles/findSaved/true', data => {
     data.forEach(element => {
       $('#savedArticles').append(
@@ -26,18 +45,18 @@ $(document).ready(() => {
       $('#saveNoteButton').attr('data-id', thisId);
       //eslint-disable-next-line
       console.log(res.notes.length);
-      if (res.notes.length === 0) {
-        $('ul.savedNotes').append(
-          '<li class="list-group-item">No Saved Notes</li>'
-        );
-      } else {
-        //eslint-disable-next-line
+      if (res.notes.length > 0) {
+        $('#noSavedNotes').hide();
+        $('ul.savedNotes').empty();
+
         res.notes.forEach(note => {
           $('ul.savedNotes').append(
             //eslint-disable-next-line
             `<li class="list-group-item">${
               note.title
-            }<button type="button" class="deleteNote" aria-label="Delete">
+            }<button type="button" data-id="${
+              note._id
+            }" class="deleteNote" aria-label="Delete">
             <span aria-hidden="true">&times;</span>
           </button></li>`
           );
@@ -87,11 +106,25 @@ $(document).on('click', '.delete', function(event) {
   event.preventDefault();
   const thisId = $(this).attr('data-id');
 
-  $.ajax({
-    method: 'PUT',
-    url: `/api/articles/${thisId}/deleteSavedArticle`
-  });
+  $.put(`/api/articles/${thisId}/deleteSavedArticle`);
 
   $('#articleDeleted').modal('show');
   $(`div#${thisId}`).remove();
+});
+
+$(document).on('click', '.deleteNote', function(event) {
+  event.preventDefault();
+  const thisId = $(this).attr('data-id');
+
+  $.delete(`/api/notes/${thisId}/deleteNote`);
+
+  $('#notes').modal('hide');
+  $('#noteDeleted').modal('show');
+
+  $.getJSON(`/api/articles/findArticleById/${thisId}`);
+});
+
+$('#noteDeleted').on('hide', event => {
+  event.preventDefault();
+  location.reload();
 });

@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-unused-vars */
 const db = require('../models');
 // Our scraping tools
@@ -93,6 +94,24 @@ module.exports = app => {
         );
       })
 
+      .then(dbArticle => {
+        res.json(dbArticle);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  });
+
+  app.delete('/api/notes/:_id/deleteNote', (req, res) => {
+    console.log(req.params._id);
+    db.Note.findByIdAndDelete(req.params._id)
+      .then(dbNote => {
+        return db.Article.findOneAndUpdate(
+          { _id: req.params._id },
+          { $pull: { notes: dbNote._id } },
+          { new: true }
+        );
+      })
       .then(dbArticle => {
         res.json(dbArticle);
       })
