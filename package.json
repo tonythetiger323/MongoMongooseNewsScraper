@@ -18,6 +18,9 @@
       "pre-commit": "lint-staged"
     }
   },
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tonythetiger323/MongoMongooseNewsScraper.git"
