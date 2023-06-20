@@ -12,19 +12,22 @@ module.exports = app => {
     axios.get('https://www.superherohype.com/').then(response => {
       const $ = cheerio.load(response.data);
 
-      $('article div.listed-article-content').each(function(i, element) {
+      $('article').each(function(i, element) {
         const result = {};
 
         result.title = $(this)
+          .children('div.wp-block-xwp-curated-content__card-header')
+          .children('h3')
           .children('a')
           .text();
         result.summary = $(this)
-          .children('div.listed-article-excerpt')
+          .children('div.wp-block-xwp-curated-content__card-excerpt')
           .text();
         result.link = $(this)
+          .children('div.wp-block-xwp-curated-content__card-header')
+          .children('h3')
           .children('a')
           .attr('href');
-
         db.Article.create(result);
       });
 
@@ -103,7 +106,6 @@ module.exports = app => {
   });
 
   app.delete('/api/notes/:_id/deleteNote', (req, res) => {
-    console.log(req.params._id);
     db.Note.findByIdAndDelete(req.params._id)
       .then(dbNote => {
         return db.Article.findOneAndUpdate(

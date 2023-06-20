@@ -41,11 +41,10 @@
     "express-handlebars": "^3.0.0",
     "express-handlebars-sections": "^1.0.1",
     "json-stringify-safe": "^5.0.1",
-    "mongoose": "^5.4.5",
+    "mongoose": "^7.3.0",
     "path": "^0.12.7",
     "serve-favicon": "^2.5.0",
-    "timeago": "^1.6.3",
-    "trackjs": "^3.0.1"
+    "timeago": "^1.6.3"
   },
   "devDependencies": {
     "acorn": "^6.0.5",
@@ -61,7 +60,6 @@
     "lint-staged": "^8.1.0",
     "mocha": "^5.2.0",
     "prettier": "^1.16.1",
-    "server": "^1.0.18",
-    "winston-mongodb": "^4.0.3"
+    "server": "^1.0.18"
   }
 }

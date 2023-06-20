@@ -44,7 +44,6 @@ $(document).ready(() => {
       $('#noteModalTitle').text(`Notes For Article: ${res.title}`);
       $('#saveNoteButton').attr('data-id', thisId);
       //eslint-disable-next-line
-      console.log(res.notes.length);
       if (res.notes.length > 0) {
         $('#noSavedNotes').hide();
         $('ul.savedNotes').empty();

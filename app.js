@@ -22,7 +22,9 @@ app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')));
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGODB;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true
+});
 
 // Handlebars
 app.engine(
